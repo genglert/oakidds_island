@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 0.0674847, 1 ), 0.293568, 0.293568, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="BigExplosion" type="CPUParticles2D"]
+position = Vector2( 223, 239 )
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.1
+scale_amount = 40.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 1 )
+color = Color( 1, 0.654902, 0, 1 )

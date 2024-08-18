@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://games/death_racket/Corner.gd" type="Script" id=1]
+
+[node name="Corner" type="StaticBody2D"]
+position = Vector2( 59, 64 )
+rotation = 3.14159
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="HitBox" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 65, -76, 27, -76, -81, 32, -81, 70, 65, 70 )
+
+[node name="Gfx" type="Polygon2D" parent="."]
+position = Vector2( 59, 64 )
+rotation = -3.14159
+color = Color( 0.505882, 1, 0.486275, 1 )
+antialiased = true
+polygon = PoolVector2Array( 0, 0, 140, 0, 140, 32, 32, 140, 0, 140 )

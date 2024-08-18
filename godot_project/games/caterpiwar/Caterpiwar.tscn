@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://games/caterpiwar/Caterpiwar.gd" type="Script" id=1]
+[ext_resource path="res://games/SquareBlock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://games/RectWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://games/caterpiwar/Caterpillar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://games/StartCountDown.tscn" type="PackedScene" id=5]
+[ext_resource path="res://games/GameOverScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://games/machine.png" type="Texture" id=7]
+[ext_resource path="res://games/SpiralCountDown.tscn" type="PackedScene" id=8]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 190, 216, 428, 214, 573, 214, 578, 413, 428, 415, 189, 411, 629, 11, 630, 632, 578, 462, 575, 163, 478, 162, 481, 37, 9, 10, 428, 36, 190, 37, 138, 37, 39, 463, 133, 461, 135, 594, 9, 632, 427, 593, 190, 593, 39, 217, 40, 411, 477, 593, 478, 462, 39, 160, 137, 160 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 8, 3 ), PoolIntArray( 9, 6, 3, 2 ), PoolIntArray( 9, 10, 11, 6 ), PoolIntArray( 12, 6, 11, 13 ), PoolIntArray( 1, 0, 14, 13 ), PoolIntArray( 12, 13, 14, 15 ), PoolIntArray( 16, 17, 18, 19 ), PoolIntArray( 20, 21, 5, 4 ), PoolIntArray( 22, 0, 5, 23 ), PoolIntArray( 24, 25, 8, 7 ), PoolIntArray( 24, 7, 19, 20 ), PoolIntArray( 21, 20, 19, 18 ), PoolIntArray( 23, 16, 19, 12, 22 ), PoolIntArray( 26, 22, 12 ), PoolIntArray( 26, 12, 15, 27 ) ]
+outlines = [ PoolVector2Array( 9, 10, 629, 11, 630, 632, 9, 632 ), PoolVector2Array( 138, 37, 190, 37, 190, 216, 39, 217, 39, 160, 137, 160 ), PoolVector2Array( 40, 411, 189, 411, 190, 593, 135, 594, 133, 461, 39, 463 ), PoolVector2Array( 428, 36, 481, 37, 478, 162, 575, 163, 573, 214, 428, 214 ), PoolVector2Array( 428, 415, 578, 413, 578, 462, 478, 462, 477, 593, 427, 593 ) ]
+
+[node name="Caterpiwar" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 64.0, 704.0, 642.0, 165.0, 384.0 ],
+"_edit_vertical_guides_": [ 832.0, 192.0, 512.0 ]
+}
+
+[node name="ArcadeScreen" type="ColorRect" parent="."]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 704.0
+rect_pivot_offset = Vector2( 177, 98 )
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BorderWall1" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 320, 4 )
+
+[node name="BorderWall2" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 4, 320 )
+rotation = 0.0
+
+[node name="BorderWall3" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 636, 320 )
+rotation = 3.14159
+
+[node name="BorderWall4" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 319, 637 )
+rotation = 4.71238
+
+[node name="SquareBlock" parent="ArcadeScreen" instance=ExtResource( 2 )]
+position = Vector2( 320, 320 )
+scale = Vector2( 0.392531, 0.402416 )
+
+[node name="WallNW1" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 114, 204 )
+scale = Vector2( 1, 0.2 )
+
+[node name="WallNW2" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 178, 108 )
+rotation = 0.0
+scale = Vector2( 1, 0.2 )
+
+[node name="WallSW1" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 114, 455 )
+scale = Vector2( 1, 0.2 )
+
+[node name="WallSW2" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 178, 519 )
+rotation = 0.0
+scale = Vector2( 1, 0.2 )
+
+[node name="WallNE1" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 502, 204 )
+scale = Vector2( 1, 0.2 )
+
+[node name="WallNE2" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 470, 108 )
+rotation = 0.0
+scale = Vector2( 1, 0.2 )
+
+[node name="WallSE1" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 502, 455 )
+scale = Vector2( 1, 0.2 )
+
+[node name="WallSE2" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 470, 519 )
+rotation = 0.0
+scale = Vector2( 1, 0.2 )
+
+[node name="Caterpillar1" parent="ArcadeScreen" groups=["CATERPILLARS"] instance=ExtResource( 4 )]
+position = Vector2( 93, 24 )
+active = false
+
+[node name="Caterpillar2" parent="ArcadeScreen" groups=["CATERPILLARS"] instance=ExtResource( 4 )]
+position = Vector2( 581, 484 )
+rotation = -1.14742
+active = false
+
+[node name="Caterpillar3" parent="ArcadeScreen" groups=["CATERPILLARS"] instance=ExtResource( 4 )]
+position = Vector2( 519, 33 )
+rotation = -2.54172
+active = false
+
+[node name="Caterpillar4" parent="ArcadeScreen" groups=["CATERPILLARS"] instance=ExtResource( 4 )]
+position = Vector2( 99.9999, 597 )
+rotation = 0.470981
+active = false
+
+[node name="SpiralCountDown" parent="ArcadeScreen" instance=ExtResource( 8 )]
+position = Vector2( 320, 320 )
+auto_start = false
+
+[node name="StartCountDown" parent="ArcadeScreen" instance=ExtResource( 5 )]
+margin_left = 272.0
+margin_top = 256.0
+margin_right = 368.0
+margin_bottom = 384.0
+
+[node name="NavigationArea" type="NavigationPolygonInstance" parent="ArcadeScreen"]
+position = Vector2( 0, 2 )
+navpoly = SubResource( 1 )
+
+[node name="GameOver" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 704.0
+
+[node name="Machine" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://world/cam.gd" type="Script" id=1]
+
+[node name="TrackingCam" type="Camera"]
+transform = Transform( 0.994351, 0.0328651, -0.100927, 0.0527021, 0.672499, 0.738219, 0.0921348, -0.739368, 0.666968, 6, 15, 30 )
+script = ExtResource( 1 )

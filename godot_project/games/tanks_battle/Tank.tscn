@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://games/tanks_battle/Tank.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 19.0263
+
+[node name="Tank" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -16.0, 16.0 ],
+"_edit_vertical_guides_": [ -16.0, 16.0 ]
+}
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Gfx" type="Polygon2D" parent="."]
+color = Color( 0, 0.694118, 1, 1 )
+polygon = PoolVector2Array( -16, -16, -16, 16, 16, 16, 26, 0, 16, -16 )
+
+[node name="ShellAnchor" type="Node2D" parent="."]
+position = Vector2( 26, 0 )
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 50.0
+avoidance_enabled = true

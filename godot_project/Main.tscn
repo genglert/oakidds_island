@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TurnStartTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PlayerStartTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="WorldToMinigameTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="MainContainer" type="Node" parent="."]
+
+[node name="PanelContainer" type="Node" parent="."]
+
+[node name="HUDContainer" type="Node" parent="."]
+
+[node name="TransitionContainer" type="Node" parent="."]

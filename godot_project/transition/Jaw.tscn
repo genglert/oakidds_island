@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://transition/Jaw.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 535, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "close"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35, 0.45, 0.6 ),
+"transitions": PoolRealArray( 3.4822, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 535, 0 ), Vector2( -64, 0 ), Vector2( 0, 0 ), Vector2( -64, 0 ), Vector2( -64, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "open"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1.86607, 1 ),
+"update": 0,
+"values": [ Vector2( -64, 0 ), Vector2( 535, 0 ) ]
+}
+
+[node name="Jaw" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -384.0, 384.0, 448.0, 512.0, 576.0 ],
+"_edit_vertical_guides_": [ 512.0, 1146.0, 663.0 ]
+}
+
+[node name="JawGfx" type="Polygon2D" parent="."]
+position = Vector2( 535, 0 )
+color = Color( 0.113725, 0.113725, 0.113725, 1 )
+offset = Vector2( -448, -384 )
+polygon = PoolVector2Array( 1059, -64, 576, -64, 448, 0, 575, 64, 448, 128, 576, 192, 448, 256, 576, 320, 448, 384, 576, 448, 448, 512, 576, 576, 448, 640, 576, 704, 448, 768, 576, 832, 448, 896, 576, 960, 1059, 960 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 384.0, 320.0, 448.0, 512.0, 576.0, 640.0, 704.0, 256.0, 192.0, 128.0, 64.0, 832.0, -64.0 ],
+"_edit_vertical_guides_": [ 512.0, 576.0, 448.0 ],
+"_editor_description_": ""
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../JawGfx")
+anims/RESET = SubResource( 1 )
+anims/close = SubResource( 2 )
+anims/open = SubResource( 3 )

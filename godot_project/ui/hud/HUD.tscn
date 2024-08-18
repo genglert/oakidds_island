@@ -1,0 +1,162 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://ui/hud/PlayerPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/hud/HUD.gd" type="Script" id=2]
+[ext_resource path="res://ui/hud/dice.png" type="Texture" id=3]
+[ext_resource path="res://ui/hud/TurnIndicator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/plank001.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ActiveCardRect:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "main"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ActiveCardRect:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MessagePanel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 183, -70 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "show_message"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("MessagePanel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3, 3.5 ),
+"transitions": PoolRealArray( 0.615572, 1, 2.54912, 1 ),
+"update": 0,
+"values": [ Vector2( 183, -70 ), Vector2( 183, 15 ), Vector2( 183, 15 ), Vector2( 183, -70 ) ]
+}
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 600.0 ],
+"_edit_vertical_guides_": [ 512.0 ]
+}
+
+[node name="TurnIndicator" parent="." instance=ExtResource( 4 )]
+
+[node name="ActiveCardTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="ActiveCardRect" type="TextureRect" parent="."]
+visible = false
+margin_left = 395.0
+margin_top = 185.0
+margin_right = 659.0
+margin_bottom = 597.0
+rect_pivot_offset = Vector2( 132, 206 )
+
+[node name="ActiveCardPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/main = SubResource( 2 )
+
+[node name="DiceTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DiceSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 559, 379 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 128, 128 )
+
+[node name="DiceMutatorsLabel" type="Label" parent="."]
+visible = false
+margin_left = 639.0
+margin_top = 365.0
+margin_right = 1004.0
+margin_bottom = 405.0
+
+[node name="MessagePanel" type="TextureRect" parent="."]
+margin_left = 183.0
+margin_top = -70.0
+margin_right = 838.0
+margin_bottom = -9.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Label" type="Label" parent="MessagePanel"]
+margin_left = 15.0
+margin_top = 16.0
+margin_right = 636.0
+margin_bottom = 49.0
+text = "Very important message!!"
+align = 1
+valign = 1
+
+[node name="MessagePlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/show_message = SubResource( 4 )
+
+[node name="PlayerPanel1" parent="." instance=ExtResource( 1 )]
+margin_left = 11.0
+margin_top = 72.0
+margin_right = -883.0
+margin_bottom = -535.0
+
+[node name="PlayerPanel2" parent="." instance=ExtResource( 1 )]
+margin_left = 11.0
+margin_top = 600.0
+margin_right = -884.0
+margin_bottom = -8.0
+
+[node name="PlayerPanel3" parent="." instance=ExtResource( 1 )]
+margin_left = 887.0
+margin_top = 72.0
+margin_right = -8.0
+margin_bottom = -536.0
+
+[node name="PlayerPanel4" parent="." instance=ExtResource( 1 )]
+margin_left = 887.0
+margin_top = 600.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": true
+}

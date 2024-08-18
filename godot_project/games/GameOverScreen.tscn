@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://games/GameOverScreen.gd" type="Script" id=1]
+
+[node name="GameOver" type="ColorRect"]
+margin_right = 640.0
+margin_bottom = 640.0
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 208.0, 308.0, 332.0, 432.0, 233.0, 283.0, 258.0, 245.0, 271.0, 382.0, 394.0 ],
+"_edit_vertical_guides_": [ 84.0, 184.0, 208.0, 308.0, 332.0, 432.0, 456.0, 556.0, 109.0, 159.0, 147.0, 233.0, 283.0, 481.0, 531.0, 258.0, 270.0, 246.0, 357.0, 407.0, 369.0, 395.0, 382.0 ]
+}
+
+[node name="G" type="Polygon2D" parent="."]
+position = Vector2( 26, 172 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 58, 36, 58, 136, 158, 136, 158, 80, 121, 80, 121, 98, 133, 98, 133, 111, 83, 111, 83, 61, 158, 61.25, 158, 36 )
+
+[node name="A" type="Polygon2D" parent="."]
+position = Vector2( 150, 172 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 58, 36, 58, 136, 82.8768, 136, 83, 99, 133, 99, 133, 136, 158, 136, 158, 36 )
+
+[node name="M" type="Polygon2D" parent="."]
+position = Vector2( 274, 172 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 58, 36, 58, 136, 83, 136, 83, 111, 94.8748, 136, 121.095, 136, 133, 111, 133.082, 136, 158, 136, 158, 36, 132.757, 36, 108, 99, 83.0829, 36 )
+
+[node name="E(1)" type="Polygon2D" parent="."]
+position = Vector2( 398, 172 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 58, 36, 58, 136, 158, 136, 158, 111, 83, 111, 83, 99, 106, 99, 106, 73, 83, 73, 83, 61, 158, 61, 158, 36 )
+
+[node name="O" type="Polygon2D" parent="."]
+position = Vector2( 26, 296 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 58, 36, 58, 136, 158, 136, 158, 36 )
+
+[node name="V" type="Polygon2D" parent="."]
+position = Vector2( 150, 296 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 58, 36, 96, 136, 120, 136, 158, 36, 129, 36, 108, 93, 87, 36 )
+
+[node name="E(2)" type="Polygon2D" parent="."]
+position = Vector2( 274, 296 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 58, 36, 58, 136, 158, 136, 158, 111, 83, 111, 83, 99, 106, 99, 106, 73, 83, 73, 83, 61, 158, 61, 158, 36 )
+
+[node name="R" type="Polygon2D" parent="."]
+position = Vector2( 398, 296 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 58, 36, 58, 136, 83, 136, 83, 98, 100, 98, 129, 136, 158, 136, 133, 98, 158, 98, 158, 36 )

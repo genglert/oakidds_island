@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ui/Woody.tres" type="Theme" id=1]
+[ext_resource path="res://ui/panels/cards/CardsPanel.gd" type="Script" id=2]
+[ext_resource path="res://ui/plank001.png" type="Texture" id=3]
+[ext_resource path="res://ui/panels/cards/chosen_board.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RollDiceButton:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "selected"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RollDiceButton:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.05, 0.9 ), Vector2( 1, 1 ), Vector2( 0.9, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="CardsPanel" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 202.0 ],
+"_edit_vertical_guides_": [ 512.0 ]
+}
+
+[node name="ChosenBoard" type="TextureRect" parent="."]
+margin_left = 202.0
+margin_top = 43.0
+margin_right = 822.0
+margin_bottom = 363.0
+texture = ExtResource( 4 )
+
+[node name="ChosenSlot0" type="Node2D" parent="ChosenBoard"]
+position = Vector2( 114, 159 )
+
+[node name="ChosenSlot1" type="Node2D" parent="ChosenBoard"]
+position = Vector2( 310, 159 )
+
+[node name="ChosenSlot2" type="Node2D" parent="ChosenBoard"]
+position = Vector2( 506, 159 )
+
+[node name="HelpPanel" type="TextureRect" parent="."]
+margin_left = 213.0
+margin_top = 1.0
+margin_right = 812.0
+margin_bottom = 65.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="HelpPanel"]
+margin_left = 9.0
+margin_top = 18.0
+margin_right = 587.0
+margin_bottom = 45.0
+theme = ExtResource( 1 )
+text = "Select the cards your want to use this turn (max: 3)"
+align = 1
+
+[node name="DeckContainer" type="Node2D" parent="."]
+position = Vector2( 512, 931 )
+
+[node name="RollDiceButton" type="Button" parent="."]
+margin_left = 825.0
+margin_top = 366.0
+margin_right = 1017.0
+margin_bottom = 416.0
+rect_pivot_offset = Vector2( 61, 25 )
+focus_mode = 0
+theme = ExtResource( 1 )
+shortcut_in_tooltip = false
+button_mask = 0
+enabled_focus_mode = 0
+text = "Go roll the dice!"
+
+[node name="RollDiceButtonPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/selected = SubResource( 2 )

@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://games/StartCountDown.gd" type="Script" id=1]
+
+[node name="StartCountDown" type="ColorRect"]
+margin_right = 96.0
+margin_bottom = 128.0
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 14.0, 114.0, 34.0, 94.0, 52.0 ],
+"_edit_vertical_guides_": [ 14.0, 82.0, 62.0, 34.0, 42.0 ]
+}
+
+[node name="Number3" type="Polygon2D" parent="."]
+position = Vector2( -45.322, 0 )
+scale = Vector2( 1.69492, 1 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 35, 14, 75.12, 14, 75.12, 43, 69.22, 52, 75.12, 61, 75.12, 94, 63.32, 114, 35, 114, 35, 94, 58.01, 94, 63.32, 84.6978, 63.32, 69, 53.29, 52, 63.32, 34, 35, 34 )
+
+[node name="Number2" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( -45.322, 0 )
+scale = Vector2( 1.69492, 1 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 35, 14, 63.32, 14, 75.12, 34, 75.12, 63, 46.8, 86, 46.8, 94, 75.12, 94, 75.12, 114, 35, 114, 35, 73, 63.32, 52, 63.32, 40, 59.78, 34, 35, 34 )
+
+[node name="Number1" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( -45.322, 0 )
+scale = Vector2( 1.69492, 1 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+polygon = PoolVector2Array( 46.8, 14, 63.32, 14, 63.32, 34, 63.32, 114, 51.52, 114, 51.52, 34, 46.8, 34 )
+
+[node name="Timer" type="Timer" parent="."]

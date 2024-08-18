@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://games/death_racket/DeathRacket.gd" type="Script" id=1]
+[ext_resource path="res://games/death_racket/Ball.tscn" type="PackedScene" id=2]
+[ext_resource path="res://games/death_racket/Racket.tscn" type="PackedScene" id=3]
+[ext_resource path="res://games/death_racket/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://games/death_racket/Corner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://games/StartCountDown.tscn" type="PackedScene" id=6]
+[ext_resource path="res://games/GameOverScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://games/machine.png" type="Texture" id=8]
+
+[node name="DeathRacketBasic" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 204.0, 96.0, 564.0, 672.0, 384.0 ],
+"_edit_vertical_guides_": [ 332.0, 224.0, 692.0, 800.0, 512.0, 832.0 ]
+}
+
+[node name="ArcadeScreen" type="ColorRect" parent="."]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 704.0
+rect_pivot_offset = Vector2( 177, 98 )
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Corner1" parent="ArcadeScreen" instance=ExtResource( 5 )]
+
+[node name="Corner2" parent="ArcadeScreen" instance=ExtResource( 5 )]
+position = Vector2( 576, 59 )
+rotation = -1.5708
+
+[node name="Corner3" parent="ArcadeScreen" instance=ExtResource( 5 )]
+position = Vector2( 64, 581 )
+rotation = 1.5708
+
+[node name="Corner4" parent="ArcadeScreen" instance=ExtResource( 5 )]
+position = Vector2( 581, 576 )
+rotation = 0.0
+
+[node name="Wall1" parent="ArcadeScreen" instance=ExtResource( 4 )]
+position = Vector2( 0, 320 )
+racket_path = NodePath("../Racket1")
+
+[node name="Wall2" parent="ArcadeScreen" instance=ExtResource( 4 )]
+position = Vector2( 640, 320 )
+rotation = 3.14159
+racket_path = NodePath("../Racket2")
+
+[node name="Wall3" parent="ArcadeScreen" instance=ExtResource( 4 )]
+position = Vector2( 320, 0 )
+rotation = 1.5708
+racket_path = NodePath("../Racket3")
+
+[node name="Wall4" parent="ArcadeScreen" instance=ExtResource( 4 )]
+position = Vector2( 320, 640 )
+rotation = -1.5708
+racket_path = NodePath("../Racket4")
+
+[node name="Ball" parent="ArcadeScreen" instance=ExtResource( 2 )]
+position = Vector2( 320, 320 )
+
+[node name="Racket1" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 32, 320 )
+ball_path = NodePath("../Ball")
+
+[node name="Racket2" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 608, 320 )
+player_id = 1
+ball_path = NodePath("../Ball")
+
+[node name="Racket3" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 320, 32 )
+rotation = 1.5708
+player_id = 2
+cpu = true
+direction = 0
+ball_path = NodePath("../Ball")
+
+[node name="Racket4" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 320, 608 )
+rotation = 1.5708
+player_id = 3
+cpu = true
+direction = 0
+ball_path = NodePath("../Ball")
+
+[node name="StartCountDown" parent="ArcadeScreen" instance=ExtResource( 6 )]
+margin_left = 272.0
+margin_top = 256.0
+margin_right = 368.0
+margin_bottom = 384.0
+
+[node name="GameOver" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 704.0
+
+[node name="Machine" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 8 )

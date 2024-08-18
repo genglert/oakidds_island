@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 127.999, 127.971 )
+
+[node name="SquareBlock" type="StaticBody2D"]
+position = Vector2( 0, 7.62939e-06 )
+rotation = 1.57079
+__meta__ = {
+"_edit_horizontal_guides_": [ -128.0, 128.0 ],
+"_edit_vertical_guides_": [ -128.0, 128.0 ]
+}
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2( -7.62944e-06, 7.62935e-06 )
+scale = Vector2( 1, 1.00023 )
+shape = SubResource( 2 )
+
+[node name="Gfx" type="ColorRect" parent="."]
+margin_left = -128.0
+margin_top = -128.0
+margin_right = 128.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 128, 128 )
+color = Color( 0.505882, 1, 0.486275, 1 )

@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://games/tanks_battle/Tank.tscn" type="PackedScene" id=1]
+[ext_resource path="res://games/tanks_battle/TanksBattle.gd" type="Script" id=2]
+[ext_resource path="res://games/RectWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://games/tanks_battle/BiasedBlock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://games/StartCountDown.tscn" type="PackedScene" id=5]
+[ext_resource path="res://games/GameOverScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://games/machine.png" type="Texture" id=7]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 591, 178, 587, 422, 436, 423, 406, 400, 406, 230, 459, 176, 631, 12, 630, 626, 591, 132, 590, 483, 177, 433, 235, 400, 436, 579, 173, 557, 497, 582, 12, 626, 508, 47, 9, 12, 458, 48, 202, 49, 151, 48, 57, 143, 50, 482, 58, 196, 52, 432, 131, 558, 201, 196, 235, 230 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4, 5 ), PoolIntArray( 6, 7, 0, 8 ), PoolIntArray( 0, 7, 9, 1 ), PoolIntArray( 10, 11, 3, 2, 12, 13 ), PoolIntArray( 14, 9, 7 ), PoolIntArray( 14, 7, 15, 12 ), PoolIntArray( 6, 8, 16 ), PoolIntArray( 17, 6, 16, 18, 19, 20 ), PoolIntArray( 17, 20, 21 ), PoolIntArray( 22, 15, 17, 21, 23, 24 ), PoolIntArray( 13, 12, 15, 25 ), PoolIntArray( 22, 25, 15 ), PoolIntArray( 11, 10, 24, 23, 26, 27 ), PoolIntArray( 26, 19, 18, 5, 4, 27 ) ]
+outlines = [ PoolVector2Array( 9, 12, 631, 12, 630, 626, 12, 626 ), PoolVector2Array( 151, 48, 202, 49, 201, 196, 58, 196, 57, 143 ), PoolVector2Array( 458, 48, 508, 47, 591, 132, 591, 178, 459, 176 ), PoolVector2Array( 235, 230, 406, 230, 406, 400, 235, 400 ), PoolVector2Array( 52, 432, 177, 433, 173, 557, 131, 558, 50, 482 ), PoolVector2Array( 436, 423, 587, 422, 590, 483, 497, 582, 436, 579 ) ]
+
+[node name="TanksBattle" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 64.0, 704.0, 384.0 ],
+"_edit_vertical_guides_": [ 832.0, 192.0, 512.0 ]
+}
+
+[node name="ArcadeScreen" type="ColorRect" parent="."]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 704.0
+rect_pivot_offset = Vector2( 177, 98 )
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BorderWall1" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 320, 2 )
+
+[node name="BorderWall2" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 2, 320 )
+rotation = 0.0
+
+[node name="BorderWall3" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 638, 320 )
+rotation = 3.14159
+
+[node name="BorderWall4" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 319, 638 )
+rotation = 4.71238
+
+[node name="CenterBlock" parent="ArcadeScreen" instance=ExtResource( 3 )]
+position = Vector2( 320, 389 )
+scale = Vector2( 4.52448, 0.230883 )
+
+[node name="Block1" parent="ArcadeScreen" instance=ExtResource( 4 )]
+position = Vector2( 129, 123 )
+rotation = -8.88506e-06
+scale = Vector2( 1.45626, 1.48 )
+
+[node name="Block2" parent="ArcadeScreen" instance=ExtResource( 4 )]
+position = Vector2( 524, 113 )
+rotation = 1.57079
+scale = Vector2( 1.23887, 1.23887 )
+
+[node name="Block3" parent="ArcadeScreen" instance=ExtResource( 4 )]
+position = Vector2( 512, 503 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Block4" parent="ArcadeScreen" instance=ExtResource( 4 )]
+position = Vector2( 113, 495 )
+rotation = -1.5708
+scale = Vector2( 1.24, 1.24 )
+
+[node name="Tank1" parent="ArcadeScreen" groups=["TANKS"] instance=ExtResource( 1 )]
+position = Vector2( 65, 93 )
+active = false
+
+[node name="Tank2" parent="ArcadeScreen" groups=["TANKS"] instance=ExtResource( 1 )]
+position = Vector2( 549, 556 )
+rotation = -1.52928
+player_id = 1
+active = false
+
+[node name="Tank3" parent="ArcadeScreen" groups=["TANKS"] instance=ExtResource( 1 )]
+position = Vector2( 563, 81 )
+rotation = -1.91339
+player_id = 2
+active = false
+
+[node name="Tank4" parent="ArcadeScreen" groups=["TANKS"] instance=ExtResource( 1 )]
+position = Vector2( 79, 533 )
+rotation = 0.398059
+player_id = 3
+active = false
+
+[node name="StartCountDown" parent="ArcadeScreen" instance=ExtResource( 5 )]
+margin_left = 273.0
+margin_top = 256.0
+margin_right = 369.0
+margin_bottom = 384.0
+
+[node name="NavigationArea" type="NavigationPolygonInstance" parent="ArcadeScreen"]
+position = Vector2( 0, 2 )
+navpoly = SubResource( 1 )
+
+[node name="GameOver" parent="." instance=ExtResource( 6 )]
+visible = false
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 704.0
+
+[node name="Machine" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 768.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}

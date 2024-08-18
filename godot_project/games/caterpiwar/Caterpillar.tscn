@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://games/caterpiwar/Caterpillar.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.06226
+
+[node name="Caterpillar" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -8.0, 8.0 ],
+"_edit_vertical_guides_": [ -8.0, 8.0 ]
+}
+speed = 75.0
+
+[node name="HeadHitBox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="HeadGfx" type="Polygon2D" parent="."]
+position = Vector2( -1.52684, 0 )
+scale = Vector2( 0.404572, 0.5 )
+color = Color( 0, 0.694118, 1, 1 )
+polygon = PoolVector2Array( -16, -16, -16, 16, 16, 16, 23.4803, 4.03153, 12, 0, 23.5479, -3.9233, 16, -16 )
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+avoidance_enabled = true
