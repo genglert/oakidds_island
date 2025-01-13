@@ -29,6 +29,7 @@ func set_player(player):
     player_id = player.id
     cpu = player.cpu
     controller_id = player.controller_id
+    $Gfx.color = player.color
 
 
 func _find_target():

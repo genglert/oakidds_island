@@ -9,6 +9,7 @@ var controller_id = null
 var road_idx = 1
 var cartridges_count = 0
 var avatar_id = "woodlouse"
+var color = Color("#00b1ff")
 var deck = load("deck.gd").new()
 var mutators = []  # Array[Mutator]
 var cases_count = 0  # TODO: getter

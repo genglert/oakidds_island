@@ -28,6 +28,7 @@ func set_player(player):
     cpu = player.cpu
     controller_id = player.controller_id
 #    print(controller_id)
+    $Gfx.color = player.color
 
 
 # TODO: use slerp() ???

@@ -22,6 +22,7 @@ func set_player(player):
     cpu = player.cpu
     controller_id = player.controller_id
 #    print(controller_id)
+    $HeadGfx.color = player.color
 
 
 func _find_target():

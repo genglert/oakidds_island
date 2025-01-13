@@ -15,8 +15,9 @@ func _ready():
 
 func set_player(player_):
     self.player = player_
-    $Name.text = player_.name
+    $Name.text = player_.name  # NB: unused
     $Portrait.texture = load('res://avatar/images/%s-portrait.png' % player_.avatar_id)
+    $ColorIndicator.color = player_.color
 
 
 # TODO: animation
