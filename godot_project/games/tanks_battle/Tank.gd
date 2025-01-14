@@ -10,7 +10,8 @@ export(String) var controller_id = "kb1"
 
 export(float, 1.0, 1000.0) var speed = 150.0
 export(float, 0.1, 360.0) var rotation_speed = 2.0
-export(float) var attack_distance = 200.0
+#export(float) var attack_distance = 200.0
+var attack_distance = 200.0
 
 export(bool) var active = true
 
@@ -19,7 +20,7 @@ var shell = null
 
 var explosion_scn = preload("res://games/BigExplosion.tscn")
 
-# IA
+# For AI
 onready var navigation_agent = $NavigationAgent
 onready var parent = get_parent()
 var target = null
@@ -30,6 +31,16 @@ func set_player(player):
     cpu = player.cpu
     controller_id = player.controller_id
     $Gfx.color = player.color
+
+    match player.smartness:
+        player.Smartness.LOW:
+            attack_distance = 50
+
+        player.Smartness.MIDDLE:
+            attack_distance = 100
+
+        player.Smartness.HIGH:
+            attack_distance = 200
 
 
 func _find_target():
