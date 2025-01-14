@@ -2,8 +2,16 @@ extends Object
 
 class_name Player
 
+# For A.I.
+enum Smartness {
+    LOW,
+    MIDDLE,
+    HIGH,
+}
+
 var id = 0  # getter
 var cpu = true
+var smartness = Smartness.MIDDLE
 var name = "XXX"
 var controller_id = null
 var road_idx = 1

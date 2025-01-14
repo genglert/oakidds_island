@@ -3,7 +3,7 @@ extends KinematicBody2D
 const EPSILON: float = 0.0001
 
 export(float, 1.0, 10000.0) var speed = 300.0
-export(float, 1.0, 10000.0) var max_speed = 3000.0
+export(float, 1.0, 10000.0) var max_speed = 1300.0
 
 var vector = Vector2.ZERO
 var active = true
@@ -13,8 +13,6 @@ var sparks_scn = preload("res://games/ImpactSparks.tscn")
 
 
 func _ready():
-#    vector = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized()
-
     # warning-ignore:return_value_discarded
     $ExplosionTimer.connect("timeout", self, "_on_Timer_explosion_timeout")
 

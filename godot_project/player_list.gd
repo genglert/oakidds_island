@@ -22,6 +22,7 @@ func populate():
     player1.color = Color("#648FFF")
 
     var player2 = create_player()
+    player2.smartness = player2.Smartness.HIGH
     player2.avatar_id = "moth"
     player2.color = Color("#785EF0")
 #    player2.cpu = false
@@ -36,6 +37,7 @@ func populate():
 #    player3.controller_id = "jp1"
 
     var player4 = create_player()
+    player4.smartness = player4.Smartness.LOW
     player4.avatar_id = "slug"
     player4.color = Color("#FFB000")
     player4.name += " (CPU)"
