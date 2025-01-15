@@ -14,11 +14,12 @@ The game is in an early stage of development, but it is playable.
  - No music, no sound fx.
  - No translation (only english).
  - No full screen, the size of the window is fixed (1024x768).
+ - No pause mode.
  - Only 4 Oakidds are available.
 
 ### Technical details
 
-The game is made with [Godot](https://godotengine.org/) (currently 3.5).
+The game is made with [Godot](https://godotengine.org/) (currently 3.6).
 Graphical assets are made with [Inkscape](https://inkscape.org/).
 
 ### Licensing
