@@ -17,10 +17,6 @@ func _ready():
 
 
 func _process(_delta):
-#    if active and (
-#        Input.is_action_just_released("p1_action")
-#        or Input.is_action_just_released("p2_action")
-#    ):
     if not active:
         return
 

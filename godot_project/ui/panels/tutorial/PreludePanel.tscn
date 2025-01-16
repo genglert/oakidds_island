@@ -1,0 +1,523 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://ui/plank001.png" type="Texture" id=1]
+[ext_resource path="res://world/items/card.png" type="Texture" id=2]
+[ext_resource path="res://avatar/images/moth.png" type="Texture" id=3]
+[ext_resource path="res://world/scenery/arcade_trunk.png" type="Texture" id=4]
+[ext_resource path="res://avatar/images/shrew.png" type="Texture" id=5]
+[ext_resource path="res://world/items/cartridge.png" type="Texture" id=6]
+[ext_resource path="res://avatar/images/slug.png" type="Texture" id=7]
+[ext_resource path="res://avatar/images/woodlouse.png" type="Texture" id=8]
+[ext_resource path="res://ui/cards/watershoot.png" type="Texture" id=9]
+[ext_resource path="res://ui/cards/piggin.png" type="Texture" id=10]
+[ext_resource path="res://ui/hud/dice.png" type="Texture" id=11]
+[ext_resource path="res://ui/panels/tutorial/PreludePanel.gd" type="Script" id=12]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Page1/KiddsLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Page1/IslandLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Page1/HobbyLabel1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Page1/HobbyLabel2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Page1/ArcadeLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Page2/GoalLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Page2/CardLabel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Page2/DiceLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Page2/Help2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Page1/Help1:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "explain_page1"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Page1/KiddsLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Page1/IslandLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 2.5, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Page1/HobbyLabel1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3, 3.5, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Page1/HobbyLabel2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 4.5, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Page1/ArcadeLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5, 5.5, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Page1/Help1:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 6, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "explain_page2"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Page2/GoalLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Page2/CardLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.6, 3.1, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Page2/DiceLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4, 4.5, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Page2/Help2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="PreludePanel" type="Panel"]
+margin_left = 140.0
+margin_top = 33.0
+margin_right = 890.0
+margin_bottom = 733.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 345.0 ],
+"_edit_vertical_guides_": [ 512.0 ]
+}
+
+[node name="Plank" type="TextureRect" parent="."]
+margin_left = 244.0
+margin_top = -15.0
+margin_right = 500.0
+margin_bottom = 49.0
+rect_rotation = -1.37557
+texture = ExtResource( 1 )
+stretch_mode = 3
+
+[node name="Title" type="Label" parent="Plank"]
+margin_left = 84.0
+margin_top = 16.0
+margin_right = 180.0
+margin_bottom = 43.0
+text = "PRELUDE"
+
+[node name="Page1" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="KiddsLabel" type="Label" parent="Page1"]
+margin_left = 15.0
+margin_top = 96.0
+margin_right = 224.0
+margin_bottom = 123.0
+text = "Here are the Oakidds:"
+
+[node name="Kid1" type="TextureRect" parent="Page1/KiddsLabel"]
+margin_left = 229.0
+margin_top = -11.0
+margin_right = 741.0
+margin_bottom = 501.0
+rect_rotation = 5.03081
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 8 )
+
+[node name="Kid2" type="TextureRect" parent="Page1/KiddsLabel"]
+margin_left = 341.0
+margin_top = -27.0
+margin_right = 853.0
+margin_bottom = 485.0
+rect_rotation = -1.4276
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+
+[node name="Kid3" type="TextureRect" parent="Page1/KiddsLabel"]
+margin_left = 444.0
+margin_top = 7.0
+margin_right = 956.0
+margin_bottom = 519.0
+rect_rotation = -1.39558
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+
+[node name="Kid4" type="TextureRect" parent="Page1/KiddsLabel"]
+margin_left = 570.0
+margin_top = -12.0
+margin_right = 1082.0
+margin_bottom = 500.0
+rect_rotation = 3.46535
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+
+[node name="IslandLabel" type="Label" parent="Page1"]
+margin_left = 51.0
+margin_top = 227.0
+margin_right = 673.0
+margin_bottom = 254.0
+text = "They live on a small island."
+
+[node name="HobbyLabel1" type="Label" parent="Page1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 78.0
+margin_top = 279.0
+margin_right = 477.0
+margin_bottom = 396.0
+text = "They like to play with cards
+"
+
+[node name="Card" type="TextureRect" parent="Page1/HobbyLabel1"]
+margin_left = 284.0
+margin_top = -14.0001
+margin_right = 448.0
+margin_bottom = 242.0
+rect_rotation = 8.30385
+rect_scale = Vector2( 0.374725, 0.389184 )
+texture = ExtResource( 2 )
+
+[node name="HobbyLabel2" type="Label" parent="Page1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 454.0
+margin_top = 310.0
+margin_right = 726.0
+margin_bottom = 367.0
+text = "& video games"
+
+[node name="Cartridge" type="TextureRect" parent="Page1/HobbyLabel2"]
+margin_left = 152.0
+margin_top = -21.0
+margin_right = 408.0
+margin_bottom = 235.0
+rect_rotation = -6.07203
+rect_scale = Vector2( 0.404988, 0.404988 )
+texture = ExtResource( 6 )
+
+[node name="ArcadeLabel" type="Label" parent="Page1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 10.0
+margin_top = 395.0
+margin_right = 742.0
+margin_bottom = 452.0
+text = "Their favorite place is the arcade room where they discover the new games
+"
+
+[node name="Arcade" type="TextureRect" parent="Page1/ArcadeLabel"]
+margin_left = 254.0
+margin_top = 36.0
+margin_right = 1278.0
+margin_bottom = 1060.0
+rect_rotation = -1.21588
+rect_scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+
+[node name="Help1" type="Label" parent="Page1"]
+margin_left = 6.0
+margin_top = 668.0
+margin_right = 747.0
+margin_bottom = 695.0
+text = "Press Action to continue"
+align = 2
+
+[node name="Page2" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="GoalLabel" type="RichTextLabel" parent="Page2"]
+margin_left = 24.0
+margin_top = 62.0
+margin_right = 692.0
+margin_bottom = 246.0
+text = "The Oakkids walk around the island & try to collect the maximum of cartridges & cards
+"
+
+[node name="Card1" type="TextureRect" parent="Page2/GoalLabel"]
+margin_left = 578.0
+margin_top = 41.0
+margin_right = 742.0
+margin_bottom = 297.0
+rect_rotation = 16.3176
+rect_scale = Vector2( 0.374725, 0.389184 )
+texture = ExtResource( 2 )
+
+[node name="Card2" type="TextureRect" parent="Page2/GoalLabel"]
+margin_left = 537.0
+margin_top = 41.0
+margin_right = 701.0
+margin_bottom = 297.0
+rect_rotation = 3.52768
+rect_scale = Vector2( 0.374725, 0.389184 )
+texture = ExtResource( 2 )
+
+[node name="Card3" type="TextureRect" parent="Page2/GoalLabel"]
+margin_left = 487.0
+margin_top = 42.0
+margin_right = 651.0
+margin_bottom = 298.0
+rect_rotation = -4.98333
+rect_scale = Vector2( 0.374725, 0.389184 )
+texture = ExtResource( 2 )
+
+[node name="Cartridge1" type="TextureRect" parent="Page2/GoalLabel"]
+margin_left = 249.0
+margin_top = 50.0
+margin_right = 505.0
+margin_bottom = 306.0
+rect_rotation = -6.07203
+rect_scale = Vector2( 0.404988, 0.404988 )
+texture = ExtResource( 6 )
+
+[node name="Cartridge2" type="TextureRect" parent="Page2/GoalLabel"]
+margin_left = 181.0
+margin_top = 57.0
+margin_right = 437.0
+margin_bottom = 313.0
+rect_rotation = -9.19687
+rect_scale = Vector2( 0.404988, 0.404988 )
+texture = ExtResource( 6 )
+
+[node name="CardLabel" type="RichTextLabel" parent="Page2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 51.0
+margin_top = 261.0
+margin_right = 719.0
+margin_bottom = 496.0
+text = "Each turn, the Oakkids can use their cards to get bonus..."
+
+[node name="Card1" type="TextureRect" parent="Page2/CardLabel"]
+margin_left = 356.0
+margin_top = 32.0
+margin_right = 520.0
+margin_bottom = 288.0
+rect_rotation = 4.47407
+rect_scale = Vector2( 0.626, 0.65 )
+texture = ExtResource( 10 )
+
+[node name="Card2" type="TextureRect" parent="Page2/CardLabel"]
+margin_left = 199.0
+margin_top = 50.0
+margin_right = 363.0
+margin_bottom = 306.0
+rect_rotation = -10.3234
+rect_scale = Vector2( 0.626, 0.65 )
+texture = ExtResource( 9 )
+
+[node name="DiceLabel" type="RichTextLabel" parent="Page2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 157.0
+margin_top = 503.0
+margin_right = 722.0
+margin_bottom = 684.0
+text = "...then roll a dice to progress on the road."
+
+[node name="Dice" type="TextureRect" parent="Page2/DiceLabel"]
+margin_left = 335.0
+margin_top = 45.0
+margin_right = 464.0
+margin_bottom = 177.0
+rect_scale = Vector2( 0.626, 0.65 )
+rect_clip_content = true
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 3
+
+[node name="Help2" type="Label" parent="Page2"]
+margin_left = 5.0
+margin_top = 668.0
+margin_right = 746.0
+margin_bottom = 695.0
+text = "Press Action to return to main menu"
+align = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/explain_page1 = SubResource( 2 )
+anims/explain_page2 = SubResource( 3 )

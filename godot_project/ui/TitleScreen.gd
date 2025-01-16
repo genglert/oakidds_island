@@ -2,16 +2,25 @@ extends Node2D
 
 signal completed
 
+enum State {
+    MAIN,
+    PRELUDE,
+    COUNT,
+    CONTROLLERS,
+}
+
 export(bool) var start_at_ready = true
 
 var players = null  # PlayerList
-var back = false
+onready var state = State.MAIN
 
 
 func _ready():
     if players == null:
         players = load("player_list.gd").new()
 
+    # warning-ignore:return_value_discarded
+    $MainMenu/PreludeButton.connect("pressed", self, '_on_prelude_button_pressed')
     # warning-ignore:return_value_discarded
     $MainMenu/StartButton.connect("pressed", self, '_on_start_button_pressed')
     # warning-ignore:return_value_discarded
@@ -29,6 +38,8 @@ func _ready():
     # warning-ignore:return_value_discarded
     $PlayerCountMenu/BackButton.connect("pressed", self, '_on_back_to_main_button_pressed')
 
+    # warning-ignore:return_value_discarded
+    $PreludePanel.connect('completed', self, '_on_prelude_panel_completed')
     # warning-ignore:return_value_discarded
     $ControllersPanel.connect('completed', self, '_on_controllers_panel_completed')
 
@@ -57,7 +68,13 @@ func go():
     $MenuPlayer.play("main_appearance")
 
 
+func _on_prelude_button_pressed():
+    state = State.PRELUDE
+    $MenuPlayer.play("main_disappearance")
+
+
 func _on_start_button_pressed():
+    state = State.COUNT
     $MenuPlayer.play("main_disappearance")
 
 
@@ -67,6 +84,7 @@ func _on_exit_button_pressed():
 
 
 func _on_count_button_pressed(count):
+    state = State.CONTROLLERS
     $MenuPlayer.play("count_disappearance")
 
     for player_id in players.size():
@@ -77,8 +95,13 @@ func _on_count_button_pressed(count):
 
 
 func _on_back_to_main_button_pressed():
+    state = State.MAIN
     $MenuPlayer.play("count_disappearance")
-    back = true
+
+
+func _on_prelude_panel_completed():
+    state = State.MAIN
+    $MenuPlayer.play("prelude_disappearance")
 
 
 func _on_controllers_panel_completed():
@@ -89,32 +112,53 @@ func _on_controllers_panel_completed():
 func _on_animation_finished(anim_name):
     match anim_name:
         "main_appearance":
-            $MainMenu/StartButton.grab_focus()
+#            $MainMenu/StartButton.grab_focus()
+            $MainMenu/PreludeButton.grab_focus()
 
         "main_disappearance":
+            $MainMenu/PreludeButton.disabled  = true
             $MainMenu/StartButton.disabled  = true
             $MainMenu/ExitButton.disabled  = true
 
-            $PlayerCountMenu/OneButton.disabled  = false
-            $PlayerCountMenu/TwoButton.disabled  = false
-            $PlayerCountMenu/ThreeButton.disabled  = false
-            $PlayerCountMenu/FourButton.disabled  = false
-            $PlayerCountMenu/BackButton.disabled  = false
+            if state == State.PRELUDE:
+                $MenuPlayer.play("prelude_appearance")
+            else:
+                assert(state == State.COUNT)
 
-            $MenuPlayer.play("count_appearance")
+                $PlayerCountMenu/OneButton.disabled  = false
+                $PlayerCountMenu/TwoButton.disabled  = false
+                $PlayerCountMenu/ThreeButton.disabled  = false
+                $PlayerCountMenu/FourButton.disabled  = false
+                $PlayerCountMenu/BackButton.disabled  = false
+
+                $MenuPlayer.play("count_appearance")
+
+        "prelude_appearance":
+            $PreludePanel.go()
+
+        "prelude_disappearance":
+            $PreludePanel.reset()
+
+            $MainMenu/PreludeButton.disabled  = false
+            $MainMenu/StartButton.disabled  = false
+            $MainMenu/ExitButton.disabled  = false
+
+            $MenuPlayer.play("main_appearance")
 
         "count_appearance":
             $PlayerCountMenu/OneButton.grab_focus()
 
         "count_disappearance":
-            if back:
-                back = false
-
+            if state == State.MAIN:
+                # TODO: factorise
+                $MainMenu/PreludeButton.disabled  = false
                 $MainMenu/StartButton.disabled  = false
                 $MainMenu/ExitButton.disabled  = false
 
                 $MenuPlayer.play("main_appearance")
             else:
+                assert(state == State.CONTROLLERS)
+
                 $MenuPlayer.play("controllers_appearance")
 
             $PlayerCountMenu/OneButton.disabled  = true
