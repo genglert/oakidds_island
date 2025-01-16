@@ -410,7 +410,6 @@ func _ready():
 
 
 func _process(_delta):
-#    if Input.is_action_just_released("ui_cancel"):
     if Input.is_action_just_released("ui_quit"):
         get_tree().quit()
 
