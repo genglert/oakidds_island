@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://games/StartCountDown.tscn" type="PackedScene" id=1]
+[ext_resource path="res://games/death_racket/Racket.tscn" type="PackedScene" id=2]
+[ext_resource path="res://games/death_racket/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://games/death_racket/DeathRacketGame.gd" type="Script" id=4]
+[ext_resource path="res://games/death_racket/Corner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://games/death_racket/Wall.tscn" type="PackedScene" id=7]
+[ext_resource path="res://games/DemoIndicator.tscn" type="PackedScene" id=12]
+
+[node name="DeathRacketGame" type="ColorRect"]
+margin_right = 640.0
+margin_bottom = 640.0
+rect_pivot_offset = Vector2( 177, 98 )
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 640.0 ],
+"_edit_lock_": true,
+"_edit_vertical_guides_": [ 640.0 ]
+}
+
+[node name="Corner1" parent="." instance=ExtResource( 6 )]
+
+[node name="Corner2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 576, 59 )
+rotation = -1.5708
+
+[node name="Corner3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 64, 581 )
+rotation = 1.5708
+
+[node name="Corner4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 581, 576 )
+rotation = 6.28318
+
+[node name="Wall1" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, 320 )
+racket_path = NodePath("../Racket1")
+
+[node name="Wall2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 640, 320 )
+rotation = 3.14159
+racket_path = NodePath("../Racket2")
+
+[node name="Wall3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320, 0 )
+rotation = 1.5708
+racket_path = NodePath("../Racket3")
+
+[node name="Wall4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 320, 640 )
+rotation = -1.5708
+racket_path = NodePath("../Racket4")
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+position = Vector2( 320, 320 )
+
+[node name="Racket1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 32, 320 )
+ball_path = NodePath("../Ball")
+
+[node name="Racket2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 608, 320 )
+player_id = 1
+ball_path = NodePath("../Ball")
+
+[node name="Racket3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 320, 32 )
+rotation = 1.5708
+player_id = 2
+cpu = true
+direction = 0
+ball_path = NodePath("../Ball")
+
+[node name="Racket4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 320, 608 )
+rotation = 1.5708
+player_id = 3
+cpu = true
+direction = 0
+ball_path = NodePath("../Ball")
+
+[node name="StartCountDown" parent="." instance=ExtResource( 1 )]
+margin_left = 272.0
+margin_top = 256.0
+margin_right = 368.0
+margin_bottom = 384.0
+
+[node name="DemoIndicator" parent="." instance=ExtResource( 12 )]
+margin_left = 143.0
+margin_top = 272.0
+margin_right = 497.0
+margin_bottom = 368.0

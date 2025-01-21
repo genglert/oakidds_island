@@ -6,94 +6,100 @@ extends Node2D
 signal mini_game_ended(ranking)
 
 var players = null  # PlayerList
-var auto_start = true
+var ranking = null  # Array[Player]
 
-# TODO: <export> different speeds?
+var screen_scene = preload("res://games/tanks_battle/TanksBattleGame.tscn")
+var screen_node = null
 
-var eliminations  # : Eliminations
-var is_over = false
-
-################################################################################
-# TODO:
-#  - more SFX (particules on impacts + shells explosions)
-################################################################################
 
 func _ready():
-    if players == null:
-        players = load("player_list.gd").new()
-
-    eliminations = load("eliminations.gd").new(players)
-
+    $GameOver.visible = false
     # warning-ignore:return_value_discarded
-    $ArcadeScreen/StartCountDown.connect("finished", self, "_on_StartCoutDown_finished")
-    # warning-ignore:return_value_discarded
-    $GameOver.connect("shown", self, "_on_game_over_shown")
+    $GameOver.connect("shown", self, "_on_game_over_screen_shown")
 
-    for player_id in players.size():
-        var player = players.get_player(player_id)
-        var tank = get_node("ArcadeScreen/Tank%s" % (player_id + 1))
-        tank.set_player(player)
-
-        # warning-ignore:return_value_discarded
-        tank.connect("killed", self, "_on_tank_killed")
-
-    if auto_start:
-        start()
+    start_demo()
 
 
-func _process(_delta):
-    # TODO if DEBUG
-    # TODO: add a real pause menu with a 'quit' option (factorise with all mini games)
-    if Input.is_action_just_released("ui_quit"):
-        get_tree().quit()
-
-    # TODO: remove
-#    if Input.is_action_just_released("ui_page_down"):
-#        emit_signal(
-#            "mini_game_ended",
-#            [
-#                [players.get_player(0)],
-#                [players.get_player(1)],
-#                [players.get_player(2)],
-#                [players.get_player(3)],
-#            ]
-#        )
+#func _process(_delta):
+#    if Input.is_action_just_released("ui_page_up"):
+#        if screen_node.is_demo:
+#            quit_demo()
+#        else:
+#            start()
+#
+#    # TODO: remove
+##    if Input.is_action_just_released("ui_page_down"):
+##        emit_signal(
+##            "mini_game_ended",
+##            [
+##                [players.get_player(0)],
+##                [players.get_player(1)],
+##                [players.get_player(2)],
+##                [players.get_player(3)],
+##            ]
+##        )
 
 
 # MINI-GAME INTERFACE ----------------------------------------------------------
 func get_players_positions():
-    return [
-        $ArcadeScreen/Tank1.global_position,
-        $ArcadeScreen/Tank2.global_position,
-        $ArcadeScreen/Tank3.global_position,
-        $ArcadeScreen/Tank4.global_position,
-    ]
+    return screen_node.get_players_positions()
+
+
+func set_players(players_):
+    players = players_
+
+
+func start_demo():
+    if screen_node != null:
+        screen_node.queue_free()
+        screen_node = null
+
+    screen_node = screen_scene.instance()
+    screen_node.is_demo = true
+    # screen_node.players = players  # Not useful in demo mode
+    # warning-ignore:return_value_discarded
+    screen_node.connect("game_over", self, "_on_game_over")
+
+    $ScreenContainer.add_child(screen_node)
+
+    screen_node.start()
 
 
 # TODO: factorise
+func quit_demo():
+    if screen_node != null:
+        assert(screen_node.is_demo)
+
+        screen_node.queue_free()
+        screen_node = null
+
+    screen_node = screen_scene.instance()
+    screen_node.is_demo = false
+    screen_node.players = players
+
+    # warning-ignore:return_value_discarded
+    screen_node.connect("game_over", self, "_on_game_over")
+
+    $ScreenContainer.add_child(screen_node)
+
+
 func start():
-    $ArcadeScreen/StartCountDown.start()
+    assert(is_instance_valid(screen_node))
+    assert(not screen_node.is_demo)
+
+    screen_node.start()
 
 
 # CALLBACKS --------------------------------------------------------------------
-func _on_StartCoutDown_finished():
-    for tank_node in get_tree().get_nodes_in_group('TANKS'):
-        tank_node.active = true
-
-
-func _on_tank_killed(player_id):
-    if is_over:
-        return
-
-    eliminations.eliminate([player_id])
-
-    # TODO: factorise better?
-    if eliminations.not_eliminated_count() == 1:
-        eliminations.fill()
-        is_over = true
+func _on_game_over(ranking_):
+    if screen_node.is_demo:
+        start_demo()
+    else:
+        ranking = ranking_
         $GameOver.display()
 
 
-# TODO: factorise 
-func _on_game_over_shown():
-    emit_signal("mini_game_ended", eliminations.final_ranking())
+func _on_game_over_screen_shown():
+    assert(ranking != null)
+#    print('END SIGNAL')
+    emit_signal("mini_game_ended", ranking)

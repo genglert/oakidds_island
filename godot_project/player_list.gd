@@ -6,17 +6,18 @@ var _players = []
 var _Player = load("player.gd")
 
 
-func _init():
-    populate()
+func _init(is_demo=false):
+    populate(is_demo)
 
 
-func populate():
+func populate(is_demo=false):
     # NB: tryied a colorblind-friendly palette (sibset of the IBM's one)
     #     - chose the palette in the option menu?
     #     - add some icon/pattern too? (would be hard when player's sprite is small)
 
     var player1 = create_player()
-    player1.cpu = false
+#    player1.cpu = false
+    player1.cpu = is_demo
     player1.controller_id = "kb1"
     player1.avatar_id = "woodlouse"
     player1.color = Color("#648FFF")
