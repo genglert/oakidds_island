@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://games/DemoIndicator.gd" type="Script" id=1]
+
+[node name="DemoIndicator" type="ColorRect"]
+margin_right = 354.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 118, 41 )
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 14.0, 31.0, 82.0, 65.0 ],
+"_edit_vertical_guides_": [ 14.0, 82.0, 62.0, 167.0, 116.0, 184.0, 252.0, 269.0, 337.0, 354.0, 99.0 ]
+}
+
+[node name="D" type="Polygon2D" parent="."]
+position = Vector2( 14, 14 )
+scale = Vector2( 1.68384, 0.679244 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+offset = Vector2( -34.9999, -14 )
+polygon = PoolVector2Array( 35, 14, 63.5061, 14, 75.3837, 39.0278, 75.3837, 89.0835, 63.32, 114, 35, 114 )
+
+[node name="E" type="Polygon2D" parent="."]
+position = Vector2( 99, 14 )
+scale = Vector2( 0.677666, 0.677666 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+offset = Vector2( -58, -36 )
+polygon = PoolVector2Array( 58, 36, 58, 136.344, 158.344, 136.344, 158.344, 111.258, 83.0861, 111.258, 83.0861, 99.4531, 106.697, 99.4531, 106.697, 72.8913, 83.0861, 72.8913, 83.0861, 61.0861, 158.344, 61.0861, 158.344, 36 )
+
+[node name="M" type="Polygon2D" parent="."]
+position = Vector2( 184, 14 )
+scale = Vector2( 0.678352, 0.678352 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+offset = Vector2( -58, -36 )
+polygon = PoolVector2Array( 58, 36, 58, 136.243, 83.0607, 136.243, 83.0607, 111.182, 94.854, 136.243, 121.389, 136.243, 133.182, 111.182, 133.182, 136.243, 158.243, 136.243, 158.243, 36, 132.757, 36, 108, 99, 83.0829, 36 )
+
+[node name="O" type="Polygon2D" parent="."]
+position = Vector2( 269, 14 )
+scale = Vector2( 0.67933, 0.67933 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+offset = Vector2( -58, -36 )
+polygon = PoolVector2Array( 58, 36, 58, 136.099, 158.099, 136.099, 158.099, 36 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6

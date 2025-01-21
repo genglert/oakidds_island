@@ -46,6 +46,7 @@ enum SceneMode {
     PLAYER_ACTIONS,
     GO_TO_ARCADE,
     WORLD_TO_MINIGAME,
+    MINIGAME_DEMO,
     MINIGAME,
     MINIGAME_REWARDS,
     GAMEOVER,
@@ -410,8 +411,20 @@ func _ready():
 
 
 func _process(_delta):
+    # TODO: pause mode/menu instead
     if Input.is_action_just_released("ui_quit"):
         get_tree().quit()
+
+    # TODO: mode to minigame code?? (remove MINIGAME_DEMO state?)
+    if mode == SceneMode.MINIGAME_DEMO and \
+       Input.is_action_just_pressed("%s_action" % players.get_player(0).controller_id):
+            assert(is_instance_valid(mini_game))
+
+            mode = SceneMode.MINIGAME
+
+            mini_game.quit_demo()
+            # NB: emit "_on_hud_positions_indicated" when finished
+            hud.indicate_players_positions(mini_game.get_players_positions())
 
 
 func show_title_screen(start_at_ready):
@@ -587,8 +600,9 @@ func _on_transition_to_minigame_entered():
     # TODO: launch the loading in parallel of the transition entering...
     var mini_game_scene = load("res://games/%s.tscn" % game_name)
     mini_game = mini_game_scene.instance()
-    mini_game.players = players
-    mini_game.auto_start = false
+#    mini_game.players = players
+#    mini_game.auto_start = false
+    mini_game.set_players(players)
     add_child_below_node($MainContainer, mini_game)
 
     transition.connect("exited", self, "_on_transition_to_minigame_exited")
@@ -599,15 +613,21 @@ func _on_transition_to_minigame_exited():
     assert(mode == SceneMode.WORLD_TO_MINIGAME)
     assert(is_instance_valid(mini_game))
 
-    mode = SceneMode.MINIGAME
+#    mode = SceneMode.MINIGAME
+    mode = SceneMode.MINIGAME_DEMO
 
-    # NB: emit "_on_hud_positions_indicated" when finished
-    hud.indicate_players_positions(mini_game.get_players_positions())
+#    # NB: emit "_on_hud_positions_indicated" when finished
+#    hud.indicate_players_positions(mini_game.get_players_positions())
+
+    hud.display_message('Press Action button to start game')
 
 
 func _on_hud_positions_indicated():
     assert(mode == SceneMode.MINIGAME)
+#    assert(mode == SceneMode.MINIGAME_DEMO)
     assert(is_instance_valid(mini_game))
+
+    mode = SceneMode.MINIGAME
 
     mini_game.connect("mini_game_ended", self, "_on_mini_game_ended")
     mini_game.start()
