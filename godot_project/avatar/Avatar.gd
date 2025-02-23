@@ -3,8 +3,7 @@ extends Spatial
 signal moved(player)
 
 # TODO: export?
-#const MOVE_SPEED = 6.0
-const MOVE_SPEED = 20.0
+const MOVE_SPEED = 6.0
 #const MOVE_SPEED = 40.0
 
 enum State {
