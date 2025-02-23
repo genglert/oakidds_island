@@ -1,14 +1,47 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://games/death_racket/DeathRacket.gd" type="Script" id=1]
+[ext_resource path="res://games/ManualArrow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://games/manual_stick.svg" type="Texture" id=3]
 [ext_resource path="res://games/GameOverScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://games/machine.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Manual:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2, 87 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide_manual"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Manual:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 2.2974, 3.86374 ),
+"update": 0,
+"values": [ Vector2( -2, 87 ), Vector2( -240, 87 ) ]
+}
 
 [node name="DeathRacketBasic" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 204.0, 96.0, 564.0, 672.0, 384.0 ],
-"_edit_vertical_guides_": [ 332.0, 224.0, 692.0, 800.0, 512.0, 832.0 ]
+"_edit_vertical_guides_": [ 332.0, 224.0, 692.0, 800.0, 512.0, 832.0, 7.0 ]
 }
 
 [node name="ScreenContainer" type="Node2D" parent="."]
@@ -25,3 +58,52 @@ margin_bottom = 704.0
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 8 )
+
+[node name="Manual" type="Panel" parent="."]
+margin_left = -2.0
+margin_top = 87.0
+margin_right = 231.0
+margin_bottom = 687.0
+
+[node name="StickImage" type="TextureRect" parent="Manual"]
+margin_left = 80.0
+margin_top = 210.0
+margin_right = 208.0
+margin_bottom = 415.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 3 )
+
+[node name="UpArrow" parent="Manual" instance=ExtResource( 2 )]
+position = Vector2( 119, 167 )
+
+[node name="StickLabel" type="Label" parent="Manual"]
+margin_left = 9.0
+margin_top = 50.0
+margin_right = 225.0
+margin_bottom = 156.0
+text = "Use the stick to move the racket."
+autowrap = true
+
+[node name="HintLabel" type="Label" parent="Manual"]
+margin_left = 9.0
+margin_top = 452.0
+margin_right = 225.0
+margin_bottom = 593.0
+text = "Beware, the ball accelerates each time it bounces!!"
+autowrap = true
+
+[node name="DownArrow" parent="Manual" instance=ExtResource( 2 )]
+position = Vector2( 119, 366 )
+rotation = 3.14159
+
+[node name="RightArrow" parent="Manual" instance=ExtResource( 2 )]
+position = Vector2( 196, 279 )
+rotation = 1.5708
+
+[node name="LeftArrow" parent="Manual" instance=ExtResource( 2 )]
+position = Vector2( 39, 279 )
+rotation = -1.5708
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/hide_manual = SubResource( 2 )

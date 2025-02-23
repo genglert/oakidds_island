@@ -12,7 +12,6 @@ func _ready():
     assert(players != null)
 
     for player_id in players.size():
-#        _get_player_panel(player_id).set_player(players.get_player(player_id))
         var panel = _get_player_panel(player_id)
         panel.set_player(players.get_player(player_id))
         panel.connect("position_indicated", self, "_on_position_indicated")
@@ -21,23 +20,12 @@ func _ready():
     $ActiveCardTimer.connect("timeout", self, "_on_Timer_active_card_timeout")
     # warning-ignore:return_value_discarded
     $DiceTimer.connect("timeout", self, "_on_Timer_dice_timeout")
-#    # warning-ignore:return_value_discarded
-#    $MessageTimer.connect("timeout", self, "_on_Timer_message_timeout")
 
 
 # Message ----------------------------------------------------------------------
 func display_message(message):
-#    print(message)
-#    var label = $MessageLabel
-#    label.text = message
-#    label.visible = true
-#
-#    $MessageTimer.start()
     $MessagePanel/Label.text = message
     $MessagePlayer.play("show_message")
-
-#func _on_Timer_message_timeout():
-#    $MessageLabel.visible = false
 
 
 # Turn -------------------------------------------------------------------------
@@ -46,7 +34,6 @@ func set_max_turn(turn: int):
 
 
 func set_turn(turn: int):
-#    $TurnIndicator.text = "Turn: {turn}/{max}".format({"turn": turn, "max": self.max_turn})
     $TurnIndicator.set_turn(turn)
 
 
@@ -125,6 +112,7 @@ func update_scores():
         _get_player_panel(player_id).update_score()
 
 
-func show_players_panels():
+func show_players_panels(visible=true):
     for player_id in players.size():
-        _get_player_panel(player_id).visible = true
+#        _get_player_panel(player_id).visible = true
+        _get_player_panel(player_id).visible = visible

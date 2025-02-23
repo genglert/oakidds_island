@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="ManualArrow" type="Polygon2D"]
+color = Color( 0.44, 0.27808, 0.1364, 1 )
+offset = Vector2( -100, -351 )
+polygon = PoolVector2Array( 81, 378, 81, 364, 63, 364, 100, 324, 137, 364, 119, 364, 119, 378 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 13.0 ]
+}

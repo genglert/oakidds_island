@@ -4,6 +4,7 @@ extends Node2D
 
 # TODO: in minigame base class/scene
 signal mini_game_ended(ranking)
+signal demo_ended
 
 var players = null  # PlayerList
 var ranking = null  # Array[Player]
@@ -13,6 +14,9 @@ var screen_node = null
 
 
 func _ready():
+    # warning-ignore:return_value_discarded
+    $AnimationPlayer.connect("animation_finished", self, "_on_animation_finished")
+
     $GameOver.visible = false
     # warning-ignore:return_value_discarded
     $GameOver.connect("shown", self, "_on_game_over_screen_shown")
@@ -81,6 +85,7 @@ func quit_demo():
     screen_node.connect("game_over", self, "_on_game_over")
 
     $ScreenContainer.add_child(screen_node)
+    $AnimationPlayer.play("hide_manual")
 
 
 func start():
@@ -97,6 +102,11 @@ func _on_game_over(ranking_):
     else:
         ranking = ranking_
         $GameOver.display()
+
+
+func _on_animation_finished(anim_name):
+    if anim_name == "hide_manual":
+        emit_signal("demo_ended")
 
 
 func _on_game_over_screen_shown():
