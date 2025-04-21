@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://games/StartCountDown.tscn" type="PackedScene" id=1]
+[ext_resource path="res://games/skew_towers/BrickManager.tscn" type="PackedScene" id=2]
+[ext_resource path="res://games/skew_towers/SkewTowersGame.gd" type="Script" id=3]
+[ext_resource path="res://games/utils/PolyLabel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://games/DemoIndicator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://games/RectWall.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 71.375, 10.5 )
+
+[node name="SkewTowersGame" type="ColorRect"]
+margin_right = 640.0
+margin_bottom = 640.0
+rect_pivot_offset = Vector2( 177, 98 )
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 640.0, 320.0, 152.0, 80.0 ],
+"_edit_lock_": true,
+"_edit_vertical_guides_": [ 640.0, 320.0, 160.0, 480.0, 4.0, 636.0 ]
+}
+
+[node name="ThresholdGfx" type="Line2D" parent="."]
+points = PoolVector2Array( -49, 152, 675, 152 )
+width = 1.0
+
+[node name="LeftWall" parent="." instance=ExtResource( 6 )]
+position = Vector2( 4, 320 )
+rotation = 0.0
+
+[node name="SeparatorWall1" parent="." instance=ExtResource( 6 )]
+position = Vector2( 164, 319 )
+rotation = 0.0
+scale = Vector2( 0.25, 1 )
+
+[node name="SeparatorWall2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 324, 319 )
+rotation = 0.0
+scale = Vector2( 0.25, 1 )
+
+[node name="SeparatorWall3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 484, 319 )
+rotation = 0.0
+scale = Vector2( 0.25, 1 )
+
+[node name="RightWall" parent="." instance=ExtResource( 6 )]
+position = Vector2( 636, 320 )
+rotation = 3.14159
+
+[node name="BottomWall" parent="." instance=ExtResource( 6 )]
+position = Vector2( 319, 611 )
+rotation = 4.71238
+
+[node name="BrickManager1" parent="." groups=["MANAGERS"] instance=ExtResource( 2 )]
+position = Vector2( 80, 80 )
+active = false
+
+[node name="Threshold" type="Area2D" parent="BrickManager1"]
+position = Vector2( 0, 62 )
+
+[node name="Rect" type="CollisionShape2D" parent="BrickManager1/Threshold"]
+position = Vector2( 0, 407 )
+shape = SubResource( 1 )
+
+[node name="Score1" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 80, 80 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="BrickManager2" parent="." groups=["MANAGERS"] instance=ExtResource( 2 )]
+position = Vector2( 240, 80 )
+player_id = 1
+active = false
+
+[node name="Threshold" type="Area2D" parent="BrickManager2"]
+position = Vector2( -1, 62 )
+
+[node name="Rect" type="CollisionShape2D" parent="BrickManager2/Threshold"]
+position = Vector2( 0.5, 407 )
+shape = SubResource( 1 )
+
+[node name="Score2" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 240, 80 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="BrickManager3" parent="." groups=["MANAGERS"] instance=ExtResource( 2 )]
+position = Vector2( 400, 80 )
+player_id = 2
+active = false
+
+[node name="Threshold" type="Area2D" parent="BrickManager3"]
+position = Vector2( -1, 62 )
+
+[node name="Rect" type="CollisionShape2D" parent="BrickManager3/Threshold"]
+position = Vector2( 1.375, 407 )
+shape = SubResource( 1 )
+
+[node name="Score3" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 400, 80 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="BrickManager4" parent="." groups=["MANAGERS"] instance=ExtResource( 2 )]
+position = Vector2( 560, 80 )
+player_id = 3
+active = false
+
+[node name="Threshold" type="Area2D" parent="BrickManager4"]
+position = Vector2( 1, 62 )
+
+[node name="Rect" type="CollisionShape2D" parent="BrickManager4/Threshold"]
+position = Vector2( -0.25, 407 )
+shape = SubResource( 1 )
+
+[node name="Score4" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 560, 80 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="StartCountDown" parent="." instance=ExtResource( 1 )]
+margin_left = 273.0
+margin_top = 256.0
+margin_right = 369.0
+margin_bottom = 384.0
+__meta__ = {
+"_edit_horizontal_guides_": [ 14.0, 114.0, 34.0, 94.0, 52.0 ],
+"_edit_vertical_guides_": [ 14.0, 82.0, 62.0, 34.0, 42.0 ]
+}
+wait_time = 0.1
+
+[node name="DemoIndicator" parent="." instance=ExtResource( 5 )]
+visible = false
+margin_left = 144.0
+margin_top = 272.0
+margin_right = 498.0
+margin_bottom = 368.0

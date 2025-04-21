@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://games/skew_towers/Brick.gd" type="Script" id=1]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[node name="LBrick1" type="RigidBody2D"]
+mass = 10.0
+physics_material_override = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="HitBox" type="CollisionPolygon2D" parent="."]
+position = Vector2( -3.69285, 0.642728 )
+scale = Vector2( 0.901786, 0.814941 )
+polygon = PoolVector2Array( 25.1644, -27.7845, 12.9663, -29.0116, 10.7485, -5.69701, -24.7366, -5.69701, -25.8456, 15.1634, 22.9465, 16.3905 )
+
+[node name="Gfx" type="Polygon2D" parent="."]
+rotation = -3.14159
+color = Color( 0.505882, 1, 0.486275, 1 )
+offset = Vector2( -55.0002, -56.3749 )
+antialiased = true
+polygon = PoolVector2Array( 38.0002, 42.3749, 82.0002, 43.3748, 81.0002, 60.3748, 67.4463, 60.3749, 49.0002, 60.3749, 47.0002, 79.3749, 36.0002, 78.3749 )

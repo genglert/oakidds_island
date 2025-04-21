@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://games/utils/PolyLabel.gd" type="Script" id=1]
+
+[node name="PolyLabel" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -64.0, 64.0 ],
+"_edit_vertical_guides_": [ -48.0, 48.0 ]
+}
+
+[node name="Background" type="Polygon2D" parent="."]
+color = Color( 0.0666667, 0.164706, 0.0627451, 1 )
+polygon = PoolVector2Array( -48, -64, -48, 64, 48, 64, 48, -64 )
+
+[node name="Container" type="Node2D" parent="."]

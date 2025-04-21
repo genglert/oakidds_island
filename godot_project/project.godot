@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://player_list.gd"
 }, {
 "base": "Object",
+"class": "Scores",
+"language": "GDScript",
+"path": "res://scores.gd"
+}, {
+"base": "Object",
 "class": "Victory",
 "language": "GDScript",
 "path": "res://victory.gd"
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "Eliminations": "",
 "Player": "",
 "PlayerList": "",
+"Scores": "",
 "Victory": ""
 }
 

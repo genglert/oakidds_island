@@ -108,6 +108,10 @@ margin_left = 272.0
 margin_top = 256.0
 margin_right = 368.0
 margin_bottom = 384.0
+__meta__ = {
+"_edit_horizontal_guides_": [ 14.0, 114.0, 34.0, 94.0, 52.0 ],
+"_edit_vertical_guides_": [ 14.0, 82.0, 62.0, 34.0, 42.0 ]
+}
 
 [node name="DemoIndicator" parent="." instance=ExtResource( 5 )]
 margin_left = 143.0

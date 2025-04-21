@@ -9,7 +9,7 @@ They regularly go to the arcade room to play to the VektorJAM, a machine with ma
 ### Current state
 
 The game is in an early stage of development, but it is playable.
- - Only 3 mini arcade games.
+ - Only 4 mini arcade games.
  - Only 4 types of cards.
  - No music, no sound fx.
  - No translation (only english).

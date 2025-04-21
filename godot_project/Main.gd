@@ -57,6 +57,7 @@ var available_games = [
     "death_racket/DeathRacket",
     "tanks_battle/TanksBattle",
     "caterpiwar/Caterpiwar",
+    "skew_towers/SkewTowers",
 ]
 var played_games = []
 

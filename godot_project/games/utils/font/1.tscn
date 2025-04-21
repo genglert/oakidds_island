@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="C_1" type="Polygon2D"]
+scale = Vector2( 1.69492, 1 )
+color = Color( 0.505882, 1, 0.486275, 1 )
+offset = Vector2( -55.0598, -64 )
+polygon = PoolVector2Array( 46.8, 14, 63.32, 14, 63.32, 114, 51.52, 114, 51.52, 34, 46.8, 34 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -50.0, 50.0, -30.0 ],
+"_edit_vertical_guides_": [ 14.0, -14.0, -6.0 ]
+}

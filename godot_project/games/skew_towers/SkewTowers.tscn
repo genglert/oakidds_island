@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://games/ManualArrow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://games/GameOverScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://games/skew_towers/SkewTowers.gd" type="Script" id=3]
+[ext_resource path="res://games/manual_stick.svg" type="Texture" id=4]
+[ext_resource path="res://games/machine.png" type="Texture" id=5]
+[ext_resource path="res://games/manual_button.svg" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Manual:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2, 87 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide_manual"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Manual:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 2.2974, 3.86374 ),
+"update": 0,
+"values": [ Vector2( -2, 87 ), Vector2( -240, 87 ) ]
+}
+
+[node name="SkewTower" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ScreenContainer" type="Node2D" parent="."]
+position = Vector2( 192, 64 )
+
+[node name="GameOver" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 832.0
+margin_bottom = 704.0
+
+[node name="Machine" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Manual" type="Panel" parent="."]
+margin_left = -2.0
+margin_top = 87.0
+margin_right = 231.0
+margin_bottom = 687.0
+
+[node name="StickImage" type="TextureRect" parent="Manual"]
+margin_left = 80.0
+margin_top = 229.0
+margin_right = 208.0
+margin_bottom = 434.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 4 )
+
+[node name="RuleLabel" type="Label" parent="Manual"]
+margin_left = 15.0
+margin_top = 27.0
+margin_right = 224.0
+margin_bottom = 181.0
+text = "Stack as many bricks as you can; the game is over when you reach the line."
+autowrap = true
+
+[node name="RightArrow" parent="Manual" instance=ExtResource( 1 )]
+position = Vector2( 196, 298 )
+rotation = 1.5708
+
+[node name="LeftArrow" parent="Manual" instance=ExtResource( 1 )]
+position = Vector2( 39, 298 )
+rotation = -1.5708
+
+[node name="ArrowsLabel" type="Label" parent="Manual"]
+margin_left = 15.0
+margin_top = 190.0
+margin_right = 220.0
+margin_bottom = 217.0
+text = "Move the active brick"
+align = 1
+
+[node name="NoticeLabel" type="Label" parent="Manual"]
+margin_left = 15.0
+margin_top = 399.0
+margin_right = 224.0
+margin_bottom = 553.0
+text = "Push the button to pass in rotation mode"
+autowrap = true
+
+[node name="ButtonImage" type="TextureRect" parent="Manual"]
+margin_left = 69.0
+margin_top = 481.0
+margin_right = 197.0
+margin_bottom = 609.0
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/hide_manual = SubResource( 2 )
